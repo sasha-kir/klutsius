@@ -1,6 +1,13 @@
 @font-face {
-    font-family: 'Bender';
+    font-family: 'Bender Black';
     src: url('../fonts/Bender-Black.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bender Bold';
+    src: url('../fonts/Bender-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -12,54 +19,94 @@ html {
 body {
     --red: #b9483d;
     --gray: #aca49b;
-    font-family: 'Bender';
+    font-family: 'Bender Bold';
     background-color: #e1d9cc;
+}
+
+body, p {
+    margin: 0;
+}
+
+main {
+    background-color: bisque;
+    --pad: 30px;
+    height: calc(100vh - 2 * var(--pad));
+    width: calc(100vw - 2 * var(--pad));
+    padding: var(--pad);
 }
 
 article {
     display: grid;
-    grid-template-columns: 1fr max-content 1fr max-content 1fr;
-    grid-template-rows: 100px max-content repeat(2, 1rem) minmax(200px, 500px) 2.25rem 0.75rem;
+    grid-template-columns: 3fr max-content max-content minmax(10px, 1fr) max-content 3fr;
+    grid-template-rows: 
+        minmax(0, 50px) max-content repeat(2, 1rem) 
+        minmax(200px, 500px) 2.15rem 0.35rem minmax(0, 50px);
     letter-spacing: 0.05rem;
+    /* transform: rotate(-12deg); */
+    background-color: lightblue;
+    height: 100%;
 }
 
 .lenin {
     display: contents;
     text-transform: uppercase;
+    letter-spacing: 0.1rem;
 }
 
 .lenin__banner {
     color: white;
     font-size: 1rem;
     grid-row: 2 / 3;
-    grid-column: 2 / 3;
+    grid-column: 3;
 }
 
 .lenin__name {
+    font-family: 'Bender Black';
     color: var(--gray);
     font-size: 2rem;
     grid-row: 3 / 5;
-    grid-column: 2 / 3;
+    grid-column: 3;
+}
+
+.socialist, .construction{
+    font-size: 1.7rem;
+    color: var(--red);
+    font-variant: small-caps;
 }
 
 .socialist {
     display: flex;
-    color: var(--red);
     writing-mode: vertical-lr;
     grid-row: 4 / 7;
-    grid-column: 4 / 5;
+    grid-column: 5;
     align-items: baseline;
     justify-content: space-between;
-    margin: 0;
+}
+
+.socialist__pre, .socialist__adj__first, .construction__first {
+    text-transform: uppercase;
+    font-size: 2.5rem;
 }
 
 .socialist__pre, .socialist__adj__first {
-    text-transform: uppercase;
-    font-size: 3rem;
-    line-height: 3rem;
+    transform: scale(1.5, 0.8);
+    line-height: 3.5rem;
 }
 
 .socialist__adj {
-    font-size: 1.5rem;
     display: inline-flex;
+}
+
+.construction {
+    display: flex;
+    line-height: 1rem;
+    align-items: end;
+    grid-column: 2 / 4;
+    grid-row: 6 / 8;
+    margin-right: 3rem;
+}
+
+.construction__first {
+    transform: scale(0.8, 1.5);
+    line-height: 2.5rem;
 }

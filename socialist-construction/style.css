@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Bender Black';
-    src: url('../fonts/Bender-Black.woff') format('woff');
+    src: url('fonts/Bender-Black.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Bender Bold';
-    src: url('../fonts/Bender-Bold.woff') format('woff');
+    src: url('fonts/Bender-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -17,10 +17,13 @@ html {
 }
 
 body {
-    --red: #b9483d;
+    --red: #d24442;
     --gray: #aca49b;
     font-family: 'Bender Bold';
     background-color: #e1d9cc;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
 }
 
 body, p {
@@ -29,20 +32,25 @@ body, p {
 
 main {
     background-color: bisque;
-    --pad: 30px;
-    height: calc(100vh - 2 * var(--pad));
-    width: calc(100vw - 2 * var(--pad));
-    padding: var(--pad);
+    --pad: 40px;
+    height: calc(100vh - var(--pad));
+    width: calc(100vw - 7 * var(--pad));
+    overflow: hidden;
+    margin: auto;
+    padding-bottom: 30px;
 }
 
 article {
     display: grid;
-    grid-template-columns: 3fr max-content max-content minmax(10px, 1fr) max-content 3fr;
+    grid-template-columns: 
+        0 max-content max-content 
+        minmax(10px, 1fr) minmax(30px, 1fr)
+        max-content 3fr;
     grid-template-rows: 
-        minmax(0, 50px) max-content repeat(2, 1rem) 
-        minmax(200px, 500px) 2.15rem 0.35rem minmax(0, 50px);
+        15px max-content repeat(2, 1rem) 
+        minmax(200px, 500px) 2.15rem 0.35rem 100px;
     letter-spacing: 0.05rem;
-    /* transform: rotate(-12deg); */
+    transform: rotate(-13deg);
     background-color: lightblue;
     height: 100%;
 }
@@ -68,7 +76,28 @@ article {
     grid-column: 3;
 }
 
-.socialist, .construction{
+.lenin__photo, .stalin__photo {
+    height: calc(100vh / 1.6);
+    justify-self: end;
+    align-self: end;
+}
+
+.lenin__photo {
+    grid-row: 5 / 7;
+    grid-column: 2 / 5;
+    z-index: 2;
+}
+
+.stalin__photo {
+    grid-row: 5 / 7;
+    grid-column: 4 / 7;
+}
+
+.lenin span, .socialist, .construction {
+    z-index: 3;
+}
+
+.socialist, .construction {
     font-size: 1.7rem;
     color: var(--red);
     font-variant: small-caps;
@@ -78,7 +107,7 @@ article {
     display: flex;
     writing-mode: vertical-lr;
     grid-row: 4 / 7;
-    grid-column: 5;
+    grid-column: 6;
     align-items: baseline;
     justify-content: space-between;
 }
@@ -99,11 +128,17 @@ article {
 
 .construction {
     display: flex;
-    line-height: 1rem;
+    line-height: 4rem;
     align-items: end;
     grid-column: 2 / 4;
     grid-row: 6 / 8;
     margin-right: 3rem;
+}
+
+@-moz-document url-prefix() {
+    .construction {
+        line-height: 1rem;
+    }
 }
 
 .construction__first {

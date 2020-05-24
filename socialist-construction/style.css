@@ -13,14 +13,16 @@
 }
 
 html {
-    font-size: 25px;
+    /* font-size: 25px; */
+    font-size: 3.1vh;
 }
 
 body {
     --red: #d24442;
     --gray: #aca49b;
+    --paper: #FEFFEC;
     font-family: 'Bender Bold';
-    background-color: #e1d9cc;
+    background-color: var(--paper);
     display: flex;
     height: 100vh;
     width: 100vw;
@@ -31,10 +33,11 @@ body, p {
 }
 
 main {
-    background-color: bisque;
+    background: linear-gradient(90deg, var(--red) 70%, var(--paper) 30%);
     --pad: 40px;
     height: calc(100vh - var(--pad));
     width: calc(100vw - 7 * var(--pad));
+    min-width: 500px;
     overflow: hidden;
     margin: auto;
     padding-bottom: 30px;
@@ -48,10 +51,10 @@ article {
         max-content 3fr;
     grid-template-rows: 
         15px max-content repeat(2, 1rem) 
-        minmax(200px, 500px) 2.15rem 0.35rem 100px;
+        minmax(200px, 500px) 2.15rem 0.35rem 50px 80px;
     letter-spacing: 0.05rem;
     transform: rotate(-13deg);
-    background-color: lightblue;
+    background-color: var(--red);
     height: 100%;
 }
 
@@ -85,25 +88,32 @@ article {
 .lenin__photo {
     grid-row: 5 / 7;
     grid-column: 2 / 5;
-    z-index: 2;
+    z-index: 4;
+    transform: scale(0.9, 1);
 }
 
 .stalin__photo {
     grid-row: 5 / 7;
     grid-column: 4 / 7;
+    z-index: 2;
 }
 
-.lenin span, .socialist, .construction {
-    z-index: 3;
+.lenin span, .socialist__text, 
+.construction__text {
+    z-index: 10;
 }
 
 .socialist, .construction {
+    display: contents;
+}
+
+.socialist__text, .construction__text {
     font-size: 1.7rem;
     color: var(--red);
     font-variant: small-caps;
 }
 
-.socialist {
+.socialist__text {
     display: flex;
     writing-mode: vertical-lr;
     grid-row: 4 / 7;
@@ -112,7 +122,8 @@ article {
     justify-content: space-between;
 }
 
-.socialist__pre, .socialist__adj__first, .construction__first {
+.socialist__pre, .socialist__adj__first, 
+.construction__text__first {
     text-transform: uppercase;
     font-size: 2.5rem;
 }
@@ -126,7 +137,14 @@ article {
     display: inline-flex;
 }
 
-.construction {
+.socialist__bg {
+    background-color: var(--paper);
+    grid-row: 1 / 7;
+    grid-column: 6 / -1;
+    z-index: 3;
+}
+
+.construction__text {
     display: flex;
     line-height: 4rem;
     align-items: end;
@@ -136,12 +154,28 @@ article {
 }
 
 @-moz-document url-prefix() {
-    .construction {
+    .construction__text {
         line-height: 1rem;
     }
 }
 
-.construction__first {
+.construction__text__first {
     transform: scale(0.8, 1.5);
     line-height: 2.5rem;
+}
+
+.contruction__traktors {
+    width: calc(100vh / 6);
+    align-self: end;
+    grid-row: 5 / 9;
+    grid-column: 2;
+    z-index: 5;
+    transform: rotate(13deg);
+    margin-left: -40px; 
+}
+
+.construction__bg {
+    background-color: var(--paper);
+    grid-row: 6 / -1;
+    grid-column: 2 / -1;
 }

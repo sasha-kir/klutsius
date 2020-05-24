@@ -1,0 +1,33 @@
+body {
+    background-color: #FFE9E8;
+}
+
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.card {
+    background-color: white;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 10px 20px;
+}
+
+.card span {
+    text-align: center;
+    font-family: 'Monaco';
+}
+
+.card img {
+    height: 200px;
+}
+
+.card a:hover img {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
